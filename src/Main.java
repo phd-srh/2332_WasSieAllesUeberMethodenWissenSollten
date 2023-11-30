@@ -47,6 +47,11 @@ public class Main {
         return fibonacci(n-1) + fibonacci(n-2);
     }
 
+    public static long fibonacci_iterativ(long n) {
+        // TODO mit Schleifen, ohne Rekursion
+        return n;
+    }
+
     public static void main(String[] args) {
         ausgabe( 10 );
         ausgabe( 17.7 );
