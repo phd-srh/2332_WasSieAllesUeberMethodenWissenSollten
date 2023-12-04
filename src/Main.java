@@ -42,14 +42,25 @@ public class Main {
         return n * fakultät( n-1 );
     }
 
+    public static long anzahlAufrufe = 0;
+
     public static long fibonacci(long n) {
+        anzahlAufrufe++;
         if (n <= 2) return 1;
         return fibonacci(n-1) + fibonacci(n-2);
     }
 
     public static long fibonacci_iterativ(long n) {
-        // TODO mit Schleifen, ohne Rekursion
-        return n;
+        long fibo = 0;
+        long fibo_vorher = 1;
+        while (n > 0) {
+            //System.out.println("aktuelle Fibo: " + fibo);
+            long fibo_merken = fibo;
+            fibo = fibo + fibo_vorher;
+            fibo_vorher = fibo_merken;
+            n--;
+        }
+        return fibo;
     }
 
     public static void main(String[] args) {
@@ -58,7 +69,10 @@ public class Main {
         System.out.println( berechneGerade(4, 2) );
         System.out.println( berechneGerade(3, 5) );
         System.out.println( fakultät(6) );
-        System.out.println( fibonacci(8) );
-        System.out.println( fibonacci(50) );
+        //System.out.println( fibonacci(8) );
+        //System.out.println( fibonacci_iterativ(8) );
+        System.out.println( "fibo(50)_i = " + fibonacci_iterativ(50) );
+        System.out.println( "fibo(50)_r = " + fibonacci(50) );
+        System.out.println("Es hat " + anzahlAufrufe + " Aurufe gekostet");
     }
 }
